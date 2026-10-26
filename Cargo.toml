@@ -1,0 +1,32 @@
+[package]
+name = "synra-plugin-touchpad"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+license = "MIT"
+authors = ["imba97 <mail@imba97.cn>"]
+repository = "https://github.com/synra-rs/synra-plugin-touchpad"
+description = "Phone touchpad plugin for Synra"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+synra-plugin-sdk = { git = "https://github.com/synra-rs/synra-core.git", rev = "3f70b0b98fcdc69ebe8e05d533430ea159e181d9" }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://synra-app.dev/schema/manifest/v1.json",
+  "id": "@synra-plugin/touchpad",
+  "version": "0.1.0",
+  "title": "Synra Touchpad",
+  "description": "Phone touchpad for an explicitly authorized desktop.",
+  "publisher": {
+    "id": "synra-official",
+    "name": "Synra"
+  },
+  "sdk": {
+    "min": "0.1.0"
+  },
+  "wit": "synra:plugin@1.0.0",
+  "runtime": {
+    "headless": {
+      "artifact": "plugin.wasm",
+      "stateful": false
+    }
+  },
+  "capabilities": []
+}
