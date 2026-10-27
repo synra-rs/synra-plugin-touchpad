@@ -195,7 +195,7 @@ dependencies = [
 [[package]]
 name = "synra-plugin-sdk"
 version = "0.1.0"
-source = "git+https://github.com/synra-rs/synra-core.git?rev=3f70b0b98fcdc69ebe8e05d533430ea159e181d9#3f70b0b98fcdc69ebe8e05d533430ea159e181d9"
+source = "git+https://github.com/synra-rs/synra-core.git?rev=9c7c78b9788e5357ccb4537c9ff1f8d3abedea58#9c7c78b9788e5357ccb4537c9ff1f8d3abedea58"
 dependencies = [
  "wit-bindgen",
 ]

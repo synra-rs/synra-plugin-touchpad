@@ -20,6 +20,14 @@ impl exports::synra::plugin::lifecycle::Guest for Plugin {
     fn on_tick(_tick_json: String) -> Outcome {
         Outcome::Ok(String::new())
     }
+
+    fn on_event(_event_json: String) -> Outcome {
+        Outcome::Err(Error {
+            code: "notImplemented".to_owned(),
+            message: "this plugin declares no event handlers".to_owned(),
+            details: None,
+        })
+    }
 }
 
 impl exports::synra::plugin::share::Guest for Plugin {
