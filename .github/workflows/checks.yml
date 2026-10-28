@@ -10,6 +10,7 @@ permissions:
 
 env:
   CARGO_TERM_COLOR: always
+  SYNRA_CORE_REVISION: e0c5481494b409af6fdbbdec9f78786ae4ee0612
 
 jobs:
   check:
@@ -19,12 +20,16 @@ jobs:
       - name: Install pinned Rust toolchain
         run: rustup toolchain install --no-self-update
       - uses: Swatinem/rust-cache@v2
+      - name: Check SDK and CLI revision alignment
+        run: |
+          sdk_source=$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[].dependencies[] | select(.name == "synra-plugin-sdk") | .source')
+          test "$sdk_source" = "git+https://github.com/synra-rs/synra-core.git?rev=$SYNRA_CORE_REVISION"
       - run: cargo fmt --all --check
       - run: cargo clippy --locked --all-targets -- -D warnings
       - run: cargo test --locked
       - run: cargo clippy --locked --target wasm32-unknown-unknown -- -D warnings
       - name: Install matching author CLI
-        run: cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev e0c5481494b409af6fdbbdec9f78786ae4ee0612 --locked
+        run: cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev "$SYNRA_CORE_REVISION" --locked
       - name: Build and verify actual Wasm component
         run: |
           synra-plugin build
