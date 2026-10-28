@@ -13,7 +13,7 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-synra-plugin-sdk = { git = "https://github.com/synra-rs/synra-core.git", rev = "9c7c78b9788e5357ccb4537c9ff1f8d3abedea58" }
+synra-plugin-sdk = { git = "https://github.com/synra-rs/synra-core.git", rev = "e0c5481494b409af6fdbbdec9f78786ae4ee0612" }
 
 [profile.release]
 opt-level = "s"

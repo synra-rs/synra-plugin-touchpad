@@ -24,11 +24,11 @@ jobs:
       - run: cargo test --locked
       - run: cargo clippy --locked --target wasm32-unknown-unknown -- -D warnings
       - name: Install matching author CLI
-        run: cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev 3f70b0b98fcdc69ebe8e05d533430ea159e181d9 --locked
+        run: cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev e0c5481494b409af6fdbbdec9f78786ae4ee0612 --locked
       - name: Build and verify actual Wasm component
         run: |
           synra-plugin build
-          synra-plugin verify
+          synra-plugin verify --dir dist
           git diff --exit-code -- Cargo.lock
 
   msrv:

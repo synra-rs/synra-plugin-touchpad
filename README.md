@@ -14,16 +14,16 @@ control is claimed by these tests.
 ## Development
 
 Rust is pinned in `rust-toolchain.toml`. SDK and author CLI use core revision
-`9c7c78b9788e5357ccb4537c9ff1f8d3abedea58`, with a committed Cargo.lock.
+`e0c5481494b409af6fdbbdec9f78786ae4ee0612`, with a committed Cargo.lock.
 
 ```sh
 cargo fmt --all --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo test --locked
 cargo clippy --locked --target wasm32-unknown-unknown -- -D warnings
-cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev 9c7c78b9788e5357ccb4537c9ff1f8d3abedea58 --locked
+cargo install synra-plugin-cli --git https://github.com/synra-rs/synra-core.git --rev e0c5481494b409af6fdbbdec9f78786ae4ee0612 --locked
 synra-plugin build
-synra-plugin verify
+synra-plugin verify --dir dist
 git diff --exit-code -- Cargo.lock
 ```
 
